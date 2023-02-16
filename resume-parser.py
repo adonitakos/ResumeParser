@@ -1,9 +1,14 @@
 from flask import Flask, request, render_template, send_from_directory
 from firebase_admin import credentials, initialize_app, storage
-import os
 import re
 import PyPDF2
 import io
+import os 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+variable = os.getenv(env_variable)
 
 cred = credentials.Certificate("resumeparser-b078e-firebase-adminsdk-w3w9w-0ba829935b.json")
 initialize_app(cred, {
