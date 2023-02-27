@@ -4,13 +4,8 @@ import re
 import PyPDF2
 import io
 import os 
-from dotenv import load_dotenv
 
-load_dotenv()
-
-variable = os.getenv(env_variable)
-
-cred = credentials.Certificate("resumeparser-b078e-firebase-adminsdk-w3w9w-0ba829935b.json")
+cred = credentials.Certificate("firebase-creds.json")
 initialize_app(cred, {
     'storageBucket': 'resumeparser-b078e.appspot.com'
 })

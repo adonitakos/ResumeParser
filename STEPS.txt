@@ -1,7 +1,0 @@
-[x] Make words NON case-sensitive
-[x] Get a numerical count for how many times a word occurs, IF it occurs
-[x] Integrate (temporarily) cml user-input for a word (with instructions)
-[x] Integrate HTML form and output
-[] Fix some styling
-[x] Integrate with Firebase instead of local file system
-[x] Parse PDFs to text (would require finding or creating some samples)
