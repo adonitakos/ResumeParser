@@ -1,0 +1,59 @@
+Antonios F. Takos
+
+antoniostakos@gmail.com | (646) 707-1912 | NYC Greater Area | linked.com/in/antonios-f-takos | github.com/adonitakos
+
+
+EDUCATION:  Bachelor of Science in Computer Science, St. John’s University, Queens, New York			                2019 - 2023   
+Relevant Courses: Data Structures, Database Management Systems, Web Application Development, Data Mining, Software Engineering
+
+SKILLS:
+•	Programming/Scripting Languages: Java, Python, JavaScript, HTML, CSS, SQL, PowerShell, BASH, AutoHotkey
+•	Tools/Technologies: Git, React.js, Node.js, Express.js, Flask, Selenium, Streamlit, Pandas, Java Swing, Elementor, SSH, RDP, PXE,
+•	Platforms/Applications: GitHub, Google Firebase, MySQL, WordPress, Figma, AWS Amplify, Microsoft Office, Google Suite
+•	Miscellaneous: Leadership, Communication, Problem-Solving, I.T Operations, Modern Greek (Limited Working Proficiency)
+
+EXPERIENCE:
+Philo4Thought Hellenic Mentoring Initiative – Technology Specialist, New York, NY                      			 Mar 2023 – Present
+•	Maintain and update the organization's WordPress site utilizing Elementor plugin and custom CSS
+•	Streamlined importing of 2000+ emails into the organization's email lists with Python Pandas, reducing process time by 50%
+•	Provided AV equipment support and setup for various events, including the recording and subsequent editing of videos
+•	Received Triple "C" Award from Office of the New York State Attorney General for exceptional support and community dedication
+
+St. John’s University: Collins College of Professional Studies – Research Assistant, Queens, NY                      	Oct 2022 – Present
+•	Using the opensesame Python library to investigate engagement levels of university students with educational video content on a range of topics, including Algorithms and Support Vector Machines, across both STEM and non-STEM fields of study
+•	Leveraging PyLink library to integrate the EEG and eye-tracking technology, and using Python and data analysis techniques to interpret research findings and evaluate their impact on the field of educational engagement
+
+Headstarter – Software Engineer Fellow, Long Island City, NY                                                                                    January 2023 – March 2023
+•	Collaborated with teams to develop and deploy 3 full-stack web applications with AWS, React JS, Google Firebase, and Python Flask
+•	Acquired in-depth knowledge of development technologies and processes such as Agile, Git, CI/CD, and software design patterns
+
+St. John’s University Hellenic Society – Secretary + Web Developer, Queens, NY                                                            May 2022 – May 2023
+•	Designed and developed a fully responsive website for the student organization using React.js and Netlify, leveraging my skills in web development to provide a modern, user-friendly interface for all members and visitors alike
+•	Managed communication with members and maintained attendance/contact records  using Google Suite
+•	Collaborated with board members to schedule meetings, prepare agendas, and record minutes using tech tools
+
+Jane Street Capital – Desktop Support Engineer Intern, New York, NY 				     	             May 2022 – June 2022
+•	Imaged physical Windows and Linux workstations via PXE, configured to network, and assigned to 20+ users
+•	Implemented AutoHotkey and PowerShell scripts for Lenovo device lookup, resulting in an increase of daily task efficiency by 80%
+•	Performed daily maintenance checks on Cisco and Lenovo tech equipment in conference rooms
+
+•	
+Astoria Dental Arts – I.T Support Specialist, Queens, NY	 		        			               Sep 2019 – May 2022
+•	Troubleshooted and resolved I.T issues related to networking (including local Dentrix server or Internet connectivity), peripheral devices, unprompted Windows updates, and boot failures
+•	Performed upgrades on computer hardware including memory, secondary storage, and workstations as necessary
+•	Scanning over fifty of the practice’s large buffer of documents a day onto the practice's server. Patient records, correspondence forms, insurance bills, lab slips, lab bills, etc.
+
+PROJECTS:
+Discord GPT Bot											      		
+•	Developed a custom Discord chatbot using Node.js and OpenAI0 API & npm library, enabling users to directly query the GPT-3.5 model from text channels, improving community engagement and fostering innovative conversations
+Course Registration Bot                                                     							
+•	Developed using Python and the Selenium web framework to streamline the registration process; significantly reducing time and increasing overall efficiency by 75%
+Headstarter-Connect											       	
+•	Developed a collaborative video call scheduling React web app with Google Firebase Authentication, Firestore, Node.js, and Agora RTC to enhance teamwork and efficiency among participants
+Resume Parser											       		
+•	Built a web application using HTML, CSS, and Python Flask, enabling users to upload and scan resumes for relevant keywords
+
+
+HONORS & AWARDS:
+Eagle Scout										      		       	        
+•	The highest rank attainable in the Boy Scouts of America program. An honor only achieved by less than ten percent of its youth members. A program that has instilled in me skills in organization, team management, and above all, leadership

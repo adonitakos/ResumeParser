@@ -1,14 +1,11 @@
 from flask import Flask, request, render_template, send_from_directory
-from firebase_admin import credentials, initialize_app, storage
 import re
 import PyPDF2
 import io
 import os 
 
-cred = credentials.Certificate("firebase-creds.json")
-initialize_app(cred, {
-    'storageBucket': 'resumeparser-b078e.appspot.com'
-})
+# resumes directory
+directory = os.path.join(os.getcwd(), 'resumes')
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -22,85 +19,49 @@ def index():
 @app.route('/upload', methods=['POST'])
 def upload_file():
     file = request.files['file']
-    bucket = storage.bucket()
-    blob = bucket.blob(file.filename)
-    blob.upload_from_file(file)
+    filename = file.filename
+    file_path = os.path.join(directory, filename)
+    file.save(file_path)
     return 'File uploaded successfully'
 
 # LOCAL TEXT FILES IMPLEMENTATION
-# def search_files(directory, keyword, results):
-#     for file in os.listdir(directory):
-#         if file.endswith(".txt"):
-#             with open(os.path.join(directory, file), 'r', encoding='utf-8') as f:
-#                 contents = f.read()
-#                 matches = re.findall(keyword, contents, re.IGNORECASE)
-#                 if matches:
-#                     results.append(f"{file} contains the keyword {keyword} {len(matches)} times.")
-#                 else:
-#                     results.append(f"{file} does not contain the keyword {keyword}.")
+def search_text_files(directory, keyword, results):
+    for file in os.listdir(directory):
+        if file.endswith(".txt"):
+            with open(os.path.join(directory, file), 'r', encoding='utf-8') as f:
+                contents = f.read()
+                matches = re.findall(keyword, contents, re.IGNORECASE)
+                if matches:
+                    results.append(f"{file} contains the keyword {keyword} {len(matches)} times.")
+                else:
+                    results.append(f"{file} does not contain the keyword {keyword}.")
 
-
-# def search_files(bucket, keyword, results):
-#     blobs = bucket.list_blobs()
-#     for blob in blobs:
-#         if blob.name.endswith(".txt"):
-#             contents = blob.download_as_string().decode("utf-8")
-#             matches = re.findall(keyword, contents, re.IGNORECASE)
-#             if matches:
-#                 results.append(f"{blob.name} contains the keyword {keyword} {len(matches)} times.")
-#             else:
-#                 results.append(f"{blob.name} does not contain the keyword {keyword}.")
-                
-
-def search_pdf_files(bucket, keyword, results):
-    blobs = bucket.list_blobs()
-    for blob in blobs:
-        if blob.name.endswith(".pdf"):
-            contents = blob.download_as_string()
-            pdf = PyPDF2.PdfFileReader(io.BytesIO(contents))
-            pdf_text = ""
-            for page in range(pdf.numPages):
-                pdf_text += pdf.getPage(page).extractText()
-            matches = re.findall(keyword, pdf_text, re.IGNORECASE)
-            if matches:
-                results.append(f"{blob.name}: contains the keyword {keyword} {len(matches)} times.")
-            else:
-                results.append(f"{blob.name}: does NOT contain the keyword {keyword}.")
-        
+# LOCAL PDF FILES IMPLEMENTATION
+def search_pdf_files(directory, keyword, results):
+    for file in os.listdir(directory):
+        if file.endswith(".pdf"):
+            file_path = os.path.join(directory, file)
+            with open(file_path, 'rb') as f:
+                pdf = PyPDF2.PdfFileReader(f)
+                pdf_text = ""
+                for page in range(pdf.numPages):
+                    pdf_text += pdf.getPage(page).extractText()
+                matches = re.findall(keyword, pdf_text, re.IGNORECASE)
+                if matches:
+                    results.append(f"{file}: contains the keyword {keyword} {len(matches)} times.")
+                else:
+                    results.append(f"{file}: does NOT contain the keyword {keyword}.")
 
 
 print("\n\n================== Welcome ==================\n\n")
 
-# Example usage
-directory = directory = os.path.join(os.getcwd(), 'text-resumes')
-
-# LOCAL TEXT FILES IMPLEMENTATION
-# @app.route('/search', methods=['POST'])
-# def search():
-#     keyword = request.form['keyword']
-#     results = []
-#     search_files(directory, keyword, results)
-#     return render_template('index.html', results=results)
-
-# @app.route('/search', methods=['POST'])
-# def search():
-#     keyword = request.form['keyword']
-#     bucket = storage.bucket()
-#     results = []
-#     search_files(bucket, keyword, results)
-#     return render_template('index.html', results=results)
-
 @app.route('/search', methods=['POST'])
 def search():
-    try:
-        keyword = request.form['keyword']
-        bucket = storage.bucket()
-        results = []
-        search_pdf_files(bucket, keyword, results)
-        return render_template('index.html', results=results)
-    except Exception as e:
-        return str(e)
-
+    keyword = request.form['keyword']
+    results = []
+    search_text_files(directory, keyword, results)
+    search_pdf_files(directory, keyword, results)
+    return render_template('index.html', results=results)
 
 # Running Flask web application
 app.run(host='0.0.0.0', port=5000)
