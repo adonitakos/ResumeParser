@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Headstarter Resume Parser</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Resume Parser</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
 
-    <style>
-      
-    </style>
+    <style></style>
   </head>
   <body>
     <img src="{{img_url}}" class="logo" />
@@ -23,14 +24,19 @@
     <h3>Keywords</h3>
     <form action="{{ url_for('search') }}" method="POST">
       <input type="text" name="keyword" class="search_bar" />
-      <input type="submit" value="Search" class="custom-btn btn-2" style="margin-left: 2rem;" />
+      <input
+        type="submit"
+        value="Search"
+        class="custom-btn btn-2"
+        style="margin-left: 2rem"
+      />
     </form>
 
-    <br><br><br>
+    <br /><br /><br />
 
     <div class="result-container">
       {% for result in results %}
-        <p class="result">{{ result }}</p>
+      <p class="result">{{ result }}</p>
       {% endfor %}
     </div>
   </body>

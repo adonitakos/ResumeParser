@@ -1,10 +1,12 @@
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask, request, render_template, send_from_directory, redirect
 import re
 import PyPDF2
+from docx import Document
 import io
 import os 
+import time
 
-# resumes directory
+# resumes folder directory
 directory = os.path.join(os.getcwd(), 'resumes')
 
 # Initialize Flask app
@@ -23,7 +25,7 @@ def upload_file():
     file_path = os.path.join(directory, filename)
     file.save(file_path)
     return 'File uploaded successfully'
-
+ 
 # LOCAL TEXT FILES IMPLEMENTATION
 def search_text_files(directory, keyword, results):
     for file in os.listdir(directory):
@@ -51,7 +53,21 @@ def search_pdf_files(directory, keyword, results):
                     results.append(f"{file}: contains the keyword {keyword} {len(matches)} times.")
                 else:
                     results.append(f"{file}: does NOT contain the keyword {keyword}.")
-
+                    
+# LOCAL WORD DOC/DOCX FILES IMPLEMENTATION
+def search_word_docs(directory, keyword, results):
+    for file in os.listdir(directory):
+        if file.endswith(".doc") or file.endswith(".docx"):
+            file_path = os.path.join(directory, file)
+            doc = Document(file_path)
+            doc_text = ""
+            for para in doc.paragraphs:
+                doc_text += para.text
+            matches = re.findall(keyword, doc_text, re.IGNORECASE)
+            if matches:
+                results.append(f"{file}: contains the keyword {keyword} {len(matches)} times.")
+            else:
+                results.append(f"{file}: does NOT contain the keyword {keyword}.")
 
 print("\n\n================== Welcome ==================\n\n")
 
@@ -61,6 +77,7 @@ def search():
     results = []
     search_text_files(directory, keyword, results)
     search_pdf_files(directory, keyword, results)
+    search_word_docs(directory, keyword,results)
     return render_template('index.html', results=results)
 
 # Running Flask web application
