@@ -24,7 +24,7 @@ def upload_file():
     filename = file.filename
     file_path = os.path.join(directory, filename)
     file.save(file_path)
-    return 'File uploaded successfully'
+    return render_template('index.html', uploaded=True)
  
 # LOCAL TEXT FILES IMPLEMENTATION
 def search_text_files(directory, keyword, results):

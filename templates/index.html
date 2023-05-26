@@ -20,7 +20,7 @@
       <input type="file" name="file" class="button" />
       <input type="submit" value="Upload" class="custom-btn btn-2" />
     </form>
-
+    
     <h3>Keywords</h3>
     <form action="{{ url_for('search') }}" method="POST">
       <input type="text" name="keyword" class="search_bar" />
@@ -31,6 +31,10 @@
         style="margin-left: 2rem"
       />
     </form>
+
+    {% if uploaded %}
+    <h3>File uploaded successfully</h3>
+    {% endif %}
 
     <br /><br /><br />
 
